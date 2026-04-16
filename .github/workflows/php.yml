@@ -34,4 +34,3 @@ steps:
   - name: Import Database Schema
     run: |
       mysql -u root -proot php_micro_project < setup_db.sql
-
