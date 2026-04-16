@@ -46,7 +46,7 @@ ob_start(); // Start output buffering at the beginning
 
         if (isset($_POST["add"])) {
             $task = $_POST["task"];
-            $conn = mysqli_connect("localhost", "root", "", "php micro project");
+            $conn = mysqli_connect("your-db-host", "user", "password", "database");
             if (!$conn) {
                 echo "<script> alert('Database connection failed: " .
                     mysqli_connect_error() . "');</script>";
