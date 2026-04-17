@@ -1,17 +1,7 @@
 <?php 
 require('fpdf/fpdf.php'); 
  
-$servername = "localhost"; 
-$username = "root"; 
-$password = ""; 
-$dbname = "php micro project"; 
- 
-// Create connection 
-$conn = mysqli_connect($servername, $username, $password, $dbname); 
-if (!$conn) { 
-    die("Connection failed: " . mysqli_connect_error()); 
-} 
- 
+include 'db.php';
 // Fetch tasks 
 $sql = "SELECT Id, task, status FROM tasks"; 
 $result = mysqli_query($conn, $sql); 

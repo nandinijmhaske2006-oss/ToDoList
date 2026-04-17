@@ -18,11 +18,7 @@
 </html> 
  
 <?php 
-$conn = mysqli_connect("localhost", "root", "", "php micro project"); 
-if (!$conn) { 
-    die("Connection failed: " . mysqli_connect_error()); 
-} 
- 
+include 'db.php';
 $sql = "TRUNCATE TABLE tasks"; 
 if (mysqli_query($conn, $sql)) { 
     echo "<script> 

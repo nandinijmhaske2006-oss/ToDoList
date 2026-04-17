@@ -46,11 +46,7 @@ ob_start(); // Start output buffering at the beginning
 
         if (isset($_POST["add"])) {
             $task = $_POST["task"];
-            $conn = mysqli_connect("your-db-host", "user", "password", "database");
-            if (!$conn) {
-                echo "<script> alert('Database connection failed: " .
-                    mysqli_connect_error() . "');</script>";
-            }
+            include 'db.php';
             $sql = "INSERT INTO tasks (task, status) VALUES ('$task', 'pending')";
             if (!mysqli_query($conn, $sql)) {
                 echo "<script> alert('Error: " . $sql . "<br>" . mysqli_error($conn)
@@ -68,11 +64,7 @@ ob_start(); // Start output buffering at the beginning
         <div class="task-container">
             <ul id="tasklist">
                 <?php
-                $conn = mysqli_connect("localhost", "root", "", "php micro project");
-                if (!$conn) {
-                    echo "<script> alert('Database connection failed: " .
-                        mysqli_connect_error() . "');</script>";
-                }
+                include 'db.php';
                 $sql1 = "SELECT * FROM tasks where status != 'deleted'";
                 $result = mysqli_query($conn, $sql1);
                 if ($result && mysqli_num_rows($result) > 0) {
