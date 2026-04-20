@@ -193,6 +193,11 @@ body {
     display: block;
 }
 
+.long-strike {
+    position: relative;
+    display: inline-block;
+}
+
 .long-strike::after {
     content: "";
     position: absolute;
