@@ -1,12 +1,32 @@
-name: PHP CI
+name: PHP Continuous Integration 🚀
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main"]   # Runs every time you push to the main branch
+  pull_request:
+    branches: ["main"]   # Also runs on pull requests
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-      - run: echo "Workflow working"
+      # 1. This step "checks out" your code so the workflow can access it
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # 2. This step sets up the PHP environment on the GitHub server
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+
+      # 3. This is the "Practical" part: It checks all PHP files for syntax errors (linting)
+      - name: Run PHP Syntax Check (Lint)
+        run: |
+          # find all .php files in the directory and run 'php -l' to check for errors
+          find . -name "*.php" -print0 | xargs -0 -n1 php -l
+          
+      # 4. Final confirmation (optional)
+      - name: Success Message
+        run: echo "CI Pipeline passed! All PHP files are syntax-valid."
