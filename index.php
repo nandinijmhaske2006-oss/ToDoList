@@ -63,7 +63,7 @@ if (isset($_POST["completed"])) {
     <title>Todo List</title>
 
     <!-- css -->
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css?v=1.1">
 
 </head>
 

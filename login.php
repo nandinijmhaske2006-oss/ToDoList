@@ -26,11 +26,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $stmt->store_result();
-        
+
         if ($stmt->num_rows == 1) {
             $stmt->bind_result($id, $hashed_password);
             $stmt->fetch();
-            
+
             if (password_verify($password, $hashed_password)) {
                 $_SESSION['user_id'] = $id;
                 $_SESSION['username'] = $username;
@@ -50,18 +50,20 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - ToDo List</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css?v=1.1">
 </head>
+
 <body>
     <div class="auth-container">
         <div class="auth-header">
             <h2>Login</h2>
         </div>
-        
+
         <?php if (!empty($error)): ?>
             <div class="error" style="color: #ff5a4f; text-align: center; margin-bottom: 15px;">
                 <?php echo $error; ?>
@@ -91,4 +93,5 @@ $conn->close();
         </div>
     </div>
 </body>
+
 </html>
