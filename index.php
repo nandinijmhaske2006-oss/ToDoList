@@ -16,7 +16,7 @@ if (isset($_POST["add"])) {
     $task = $_POST["task"];
     $stmt = $conn->prepare("INSERT INTO tasks (user_id, task, status) VALUES (?, ?, 'pending')");
     $stmt->bind_param("is", $user_id, $task);
-    
+
     if (!$stmt->execute()) {
         echo "<script> alert('Error: " . $stmt->error . "');</script>";
     }
@@ -30,7 +30,7 @@ if (isset($_POST["delete"])) {
     $task_id = (int) $_POST['task_id'];
     $stmt = $conn->prepare("UPDATE tasks SET status = 'deleted' WHERE Id = ? AND user_id = ?");
     $stmt->bind_param("ii", $task_id, $user_id);
-    
+
     if (!$stmt->execute()) {
         echo "<script>alert('Error: " . $stmt->error . "');</script>";
     }
@@ -52,6 +52,16 @@ if (isset($_POST["completed"])) {
     header("Location: " . $_SERVER['PHP_SELF']);
     exit();
 }
+
+// Greeting Logic
+$hour = date('H');
+if ($hour < 12) {
+    $greeting = "Good Morning";
+} elseif ($hour < 18) {
+    $greeting = "Good Afternoon";
+} else {
+    $greeting = "Good Evening";
+}
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +81,12 @@ if (isset($_POST["completed"])) {
 
     <div class="container">
         <div class="topheader">
-            <h2>To-Do List</h2>
+            <div>
+                <h2 style="margin-bottom: 5px;">To-Do List</h2>
+                <small style="color: #666; font-family: Arial, sans-serif;">
+                    <?php echo $greeting . ", " . htmlspecialchars($_SESSION['username']); ?>! 📝
+                </small>
+            </div>
             <form name="generatepdf">
                 <label for="menu-toggle">
                     <img src="Images/checklist.png" id="checklist" alt="img">
