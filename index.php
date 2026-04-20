@@ -89,7 +89,14 @@ if ($hour < 12) {
             </div>
             <form name="generatepdf">
                 <label for="menu-toggle">
-                    <img src="Images/checklist.png" id="checklist" alt="img">
+                    <svg id="checklist" viewBox="0 0 24 24" fill="none" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                    </svg>
                 </label>
                 <!-- Hidden Checkbox  -->
                 <input type="checkbox" id="menu-toggle">
@@ -130,7 +137,14 @@ if ($hour < 12) {
                                     </div>
                                     <input type='hidden' name='task_id' value='" .
                             htmlspecialchars($row['Id']) . "'>
-                                    <button name='delete' class='delete-btn'></button>
+                                    <button name='delete' class='delete-btn'>
+                                        <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
+                                            <polyline points='3 6 5 6 21 6'></polyline>
+                                            <path d='M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2'></path>
+                                            <line x1='10' y1='11' x2='10' y2='17'></line>
+                                            <line x1='14' y1='11' x2='14' y2='17'></line>
+                                        </svg>
+                                    </button>
                                 </li> 
                             </form>";
                     }

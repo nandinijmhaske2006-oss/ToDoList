@@ -114,14 +114,25 @@ body {
 }
 
 .delete-btn {
-    width: 22px;
-    height: 22px;
-    background-image: url("Images/delete.png");
-    background-size: cover;
-    background-position: center;
-    background-color: white;
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
     border: none;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: #ff5a4f;
+    transition: 0.3s;
+}
+
+.delete-btn:hover svg {
+    fill: #e74c3c;
 }
 
 
@@ -139,15 +150,19 @@ body {
 }
 
 .completed-task {
-    background-image: url("Images/check-mark%20(1).png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    width: 30px;
-    height: 30px;
-    border: none;
+    border: 1px solid #2ecc71;
     background-color: transparent;
-    display: inline-block;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.completed-task::after {
+    content: "✔";
+    color: #2ecc71;
+    font-size: 14px;
 }
 
 #checklist {
